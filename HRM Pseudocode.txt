@@ -1,0 +1,176 @@
+Start program
+Declare an array of Persons called employees with a maximum capacity of 100
+Set employeeCount to 0
+Declare an integer variable userChoice
+
+Clear the console screen (use an appropriate system command for the operating system)
+
+Repeat until userChoice is equal to 6:
+    Display welcome message
+    Display menu options
+    Read userChoice
+
+    Validate userChoice:
+        If userChoice is not a valid integer, display an error message and continue
+
+    Switch on userChoice:
+        Case 1:  // Add a new employee
+            Declare an integer variable i and a character variable redo
+            Repeat until redo is 'n' or 'N':
+                Increment employeeCount
+                Display "Enter the information of the new employee"
+                Display "First Name: "
+                Read employees[i].firstName
+                Display "Last Name: "
+                Read employees[i].lastName
+                Display "Working hours per week: "
+                Read employees[i].workingHours
+
+                Validate employees[i].workingHours:
+                    If not a valid number, display an error message and continue
+
+                Display "Payment for one hour: "
+                Read employees[i].costPerHour
+
+                Validate employees[i].costPerHour:
+                    If not a valid number, display an error message and continue
+
+                Generate a unique personalID and store it in employees[i].personalID
+                Calculate annual salary and store it in employees[i].salary
+
+                Display the added employee's information
+                Display employee's details in a tabular format
+
+                Display "Do you want to add another employee? (y/n): "
+                Read redo
+                Increment i
+            End Repeat
+            Break
+
+        Case 2:  // Delete employee information
+            Declare an integer variable empId
+            Declare a boolean variable found and set it to false
+            Display "Enter the ID of the employee to remove: "
+            Read empId
+
+            Validate empId:
+                If not a valid number, display an error message and continue
+
+            Iterate through employees:
+                If employees[i].personalID is equal to empId:
+                    Shift employees to remove the found employee
+                    Set found to true
+                    Display "Employee with ID empId has been removed."
+                    Display updated employee list in a tabular format
+            End Iterate
+
+            If not found, display "Sorry, there is no employee with the requested personal number."
+
+            Break
+
+        Case 3:  // Update employee information
+            Declare an integer variable empIdUpdate
+            Declare a boolean variable found and set it to false
+            Display "Enter the ID of the employee to modify data: "
+            Read empIdUpdate
+
+            Validate empIdUpdate:
+                If not a valid number, display an error message and continue
+
+            Iterate through employees:
+                If employees[i].personalID is equal to empIdUpdate:
+                    Set found to true
+                    Declare an integer variable choice and a character variable redo
+                    Repeat until choice is 5 or redo is 'n' or 'N':
+                        Display a menu to choose the field to update
+                        Read choice
+
+                        If choice is 1:
+                            Display "Enter the new First Name: "
+                            Read employees[i].firstName
+                        ElseIf choice is 2:
+                            Display "Enter the new Last Name: "
+                            Read employees[i].lastName
+                        ElseIf choice is 3:
+                            Display "Enter the new Working Hours per Week: "
+                            Read employees[i].workingHours
+                            Update employees[i].salary based on the new working hours
+                        ElseIf choice is 4:
+                            Display "Enter the new Payment for One Hour: "
+                            Read employees[i].costPerHour
+                            Update employees[i].salary based on the new cost per hour
+                        ElseIf choice is 5:
+                            Break
+                        Else:
+                            Display "Invalid option. Try again."
+
+                        Display "Do you want to update another field? (y/n): "
+                        Read redo
+                    End Repeat
+            End Iterate
+
+            If not found, display "Sorry, there is no employee with the requested personal number."
+
+            Break
+
+        Case 4:  // Generate reports
+            Declare an integer variable sortingOption
+            Display a menu to choose the sorting field
+            Read sortingOption
+
+            Validate sortingOption:
+                If not a valid number, display an error message and continue
+
+            Switch on sortingOption:
+                Case 1:  // Sort by First Name
+                    Sort employees based on First Name
+                    Display sorted employee list in a tabular format
+                Case 2:  // Sort by Salary
+                    Sort employees based on Salary
+                    Display sorted employee list in a tabular format
+                Default:
+                    Display "Invalid option. Try again."
+
+            Break
+
+        Case 5:  // Search for an employee
+            Declare an integer variable searchOption
+            Declare a character variable redo1
+            Declare a string variable firstname
+            Declare double variables minSalary and maxSalary
+
+            Repeat until redo1 is 'n' or 'N':
+                Display a menu to choose the search field
+                Read searchOption
+
+                Validate searchOption:
+                    If not a valid number, display an error message and continue
+
+                If searchOption is 2:
+                    Display prompts to define a salary range
+                    Read minSalary and maxSalary
+                    Display employees within the specified salary range
+                ElseIf searchOption is 1:
+                    Display "Please enter the First name of the employee: "
+                    Read firstname
+                    Display employees with the specified First name
+                    If no match is found, display an appropriate message
+                Else:
+                    Display "Invalid option. Try again."
+
+                Display "Do you want to search for another employee? (y/n): "
+                Read redo1
+
+            End Repeat
+
+        Case 6:  // Quit the program
+            Display "Goodbye!"
+
+    Display "Press any key to continue..."
+    Clear input buffer
+    Wait for user input
+    Clear the console screen
+
+End Repeat
+
+End program
